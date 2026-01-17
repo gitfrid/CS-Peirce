@@ -4,6 +4,10 @@ A living philosophical and mathematical tribute to **Charles Sanders Peirce** (1
 
 This project implements a **integrated Peircean mathematical inquiry engine** focused on the Goldbach conjecture (easily extensible to other problems).
 
+**[The Outstanding Meaning of This Script Wiki→](https://github.com/gitfrid/CS-Peirce/wiki)**
+
+(You can also explore other wiki pages for usage details, technical notes, and more reflections on Peirce's philosophy in computation.)
+
 It faithfully follows Peirce's triadic cycle of reasoning:
 - **Abduction** — creative, fallible hypothesis generation
 - **Deduction** — diagrammatic unfolding through existential graphs (Beta/Gamma/Delta) and probabilistic evolution
@@ -26,7 +30,7 @@ Inspired by Peirce's core ideas:
 - Beautiful visual graph plot + automatic PNG save for small n (≤ 10,000)
 
 > **Prototype Py code**: [Meaning of CS Peirce.py](https://github.com/gitfrid/CS-Peirce/blob/main/Meaning%20of%20CS%20Peirce.py)
-> **Result :** [n=16](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/peirce_inquiry%20n16.log)
+> **Result :** [n=26](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/peirce_inquiry%20n26.log)
 > **Result :** [n=1M](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/peirce_inquiry%201M.log)
 
 ## On Validity, Proof, and Induction
@@ -54,7 +58,7 @@ All output logged to peirce_inquiry.log
 ### 1. Probabilistic Graph Visualization
 For small n like 26, the script generates an interactive plot and saves it as `peirce_graph_n26.png`.
 
-![Peircean Goldbach Diagram for n=26](https://github.com/gitfrid/CS-Peirce/blob/main/CS%20Peirce%20Graphs%20n16.png)
+![Peircean Goldbach Diagram for n=26](https://github.com/gitfrid/CS-Peirce/blob/main/CS%20Peirce%20Graphs%20n26.png)
 
 **What the graph shows**:
 - Central green node: **26** (the icon/problem)
@@ -78,6 +82,8 @@ Full ascii-art lemmas are preserved in `peirce_inquiry.log` — ready to copy fo
 
 ### 3. Algebraic Translation (for formal mathematicians)
 Always generated — the Hardy–Littlewood lower bound for the number of representations G(n):
+
+**The script independently reconstructs this classic asymptotic formula (Hardy–Littlewood, 1923) as the natural symbolic endpoint of its Peircean inquiry cycle — arriving at the same well-known result through its own abductive–deductive–inductive path, purely by translating the evolved diagrammatic habits into conventional mathematical notation.**
 
 $$
 \frac{2 C n \prod_{p=3}^{\infty} \frac{p - 2}{p - 1}}{\log^2 n} - \text{Error(RH)}

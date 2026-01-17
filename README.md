@@ -30,8 +30,8 @@ Inspired by Peirce's core ideas:
 - Beautiful visual graph plot + automatic PNG save for small n (≤ 10,000)
 
 > **Prototype Py code**: [Meaning of CS Peirce.py](https://github.com/gitfrid/CS-Peirce/blob/main/Meaning%20of%20CS%20Peirce.py)
-> **Result :** [n=26](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/peirce_inquiry%20n26.log)
-> **Result :** [n=1M](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/peirce_inquiry%201M.log)
+> **Result :** [n=26](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/logs/peirce_inquiry%20n26.log)
+> **Result :** [n=1M](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/logs/peirce_inquiry%201M.log)
 
 ## On Validity, Proof, and Induction
 
@@ -58,7 +58,7 @@ All output logged to peirce_inquiry.log
 ### 1. Probabilistic Graph Visualization
 For small n like 26, the script generates an interactive plot and saves it as `peirce_graph_n26.png`.
 
-![Peircean Goldbach Diagram for n=26](https://github.com/gitfrid/CS-Peirce/blob/main/CS%20Peirce%20Graphs%20n26.png)
+![Peircean Goldbach Diagram for n=26](https://github.com/gitfrid/CS-Peirce/blob/main/logs/CS%20Peirce%20Graphs%20n26.png)
 
 **What the graph shows**:
 - Central green node: **26** (the icon/problem)

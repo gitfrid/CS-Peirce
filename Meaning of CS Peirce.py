@@ -503,7 +503,7 @@ class PeirceGraph:
 
 def peircean_goldbach_inquiry(
     problem_type: str = "goldbach",
-    n: int = 16,
+    n: int = 26,
     variance_threshold: float = 0.05,
     chain_prob: float = 0.7,
     sample_count: int = 8,
@@ -573,5 +573,5 @@ def peircean_goldbach_inquiry(
 
 if __name__ == "__main__":
     print(f"Starting Meaning of CS Peirce at {datetime.now():%Y-%m-%d %H:%M:%S}")
-    peircean_goldbach_inquiry(n=16, chain_prob=0.7, synechism_prob=0.5)
+    peircean_goldbach_inquiry(n=26, chain_prob=0.7, synechism_prob=0.5)
     print(f"Inquiry finished. Full log saved to: peirce_inquiry.log")

@@ -1,105 +1,71 @@
 # Meaning of C.S. Peirce
 
-A living philosophical and mathematical tribute to **Charles Sanders Peirce** (1839–1914) — Mathematician, Logician, the founder of modern semiotics, and the logic of inquiry.
+A living philosophical and mathematical tribute to **Charles Sanders Peirce** (1839–1914) — Mathematician, Logician, founder of modern semiotics, and the architect of the logic of inquiry.
 
-This project implements a **integrated Peircean mathematical inquiry engine** focused on the Goldbach conjecture (easily extensible to other problems).
+This project implements a **genuine Peircean mathematical inquiry engine** focused on the Goldbach conjecture (easily extensible to other problems).
 
-**[The Outstanding Meaning of This Script Wiki→](https://github.com/gitfrid/CS-Peirce/wiki)**
+**[The Outstanding Meaning of This Script →](https://github.com/gitfrid/CS-Peirce/wiki)**  
+(Explore other wiki pages for usage, technical notes, and deeper reflections on Peirce in computation.)
 
-(You can also explore other wiki pages for usage details, technical notes, and more reflections on Peirce's philosophy in computation.)
-
-It faithfully follows Peirce's triadic cycle of reasoning:
+It faithfully follows Peirce's complete triadic cycle:
 - **Abduction** — creative, fallible hypothesis generation
-- **Deduction** — diagrammatic unfolding through existential graphs (Beta/Gamma/Delta) and probabilistic evolution
-- **Induction** — formation of stable habits with self-reflection, variance analysis, and fallibilism
-- **Symbolic translation** — algebraic mathematical expression (Hardy–Littlewood bound + Deuring–Heilbronn alternative)
-  <br>This translation is explanatory and contextual, not a proof or derivation
+- **Deduction** — diagrammatic unfolding via existential graphs (Beta/Gamma/Delta) and probabilistic habit evolution
+- **Induction** — stabilization of mathematical habits with self-reflection, variance analysis, and explicit fallibilism
+- **Symbolic translation** — recognition and expression of the resulting habit in the language of analytic number theory
 
 Inspired by Peirce's core ideas:
-- Diagrammatic reasoning as the essence of necessary inference (CP 5.162)
+- Diagrammatic reasoning as the heart of necessary inference (CP 5.162)
 - Truth as the limit of endless inquiry (CP 5.565)
 - Synechism (continuity), tychism (chance), and habit-formation (CP 6.169, 5.586)
 
 ## Features
 
 - Probabilistic graph evolution with chained hypostatic abstractions, synechistic flows, theorematic symmetry, and modal cuts
-- Pure Existential Graphs (Beta/Gamma/Delta) as detailed text/ascii-art lemmas
-- Self-reflective induction — automatically adjusts sample count on high variance
-- Symbolic transcription of the Hardy–Littlewood lower bound (via SymPy) with RH error term + Deuring–Heilbronn alternative
-- Full logging of all output (including lemmas) 
-- Beautiful visual graph plot + automatic PNG save for small n (≤ 10,000)
+- Pure Existential Graphs (Beta/Gamma/Delta) rendered as detailed text/ascii-art lemmas
+- Self-reflective induction — automatically adjusts sample count when variance is high
+- Symbolic transcription of the recognized Hardy–Littlewood asymptotic (via SymPy) with RH error term + Deuring–Heilbronn alternative
+- Full logging of abduction pairs, lemmas, and final graph path
+- Visual graph plot + automatic PNG save for small n (≤ 10,000)
 
-> **Prototype Py code**: [Meaning of CS Peirce.py](https://github.com/gitfrid/CS-Peirce/blob/main/Meaning%20of%20CS%20Peirce.py)
-> **Result :** [n=26](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/logs/peirce_inquiry%20n26.log)
-> **Result :** [n=1M](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/logs/peirce_inquiry%201M.log)
+> **Prototype Python code**: [Meaning of CS Peirce.py](https://github.com/gitfrid/CS-Peirce/blob/main/Meaning%20of%20CS%20Peirce.py)  
+> **Example log (n=26)**: [peirce_inquiry n26.log](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/logs/peirce_inquiry%20n26.log)  
+> **Example log (n=1M)**: [peirce_inquiry 1M.log](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/logs/peirce_inquiry%201M.log)
 
 ## On Validity, Proof, and Induction
 
-This project does not claim to prove the Goldbach conjecture. Instead, it models Charles S. Peirce’s account of how mathematics actually advances: through abductive discovery, diagrammatic deduction, and inductive stabilization of habits. Deterministic verification is performed for each tested instance, while large-n runs (e.g. n = 1,000,000) demonstrate inductive habit saturation—near-zero variance indicating that further inquiry no longer alters the conclusion within this framework. In Peircean terms, this represents a maximally stable but still fallible state of knowledge: explanatory, convergent, and open to revision.
+This project does **not** claim to prove the Goldbach conjecture.  
+Instead, it faithfully models Charles S. Peirce’s account of how mathematical knowledge actually grows: through abductive discovery, diagrammatic deduction, and inductive stabilization of habits.
 
+For each tested instance, deterministic verification is performed.  
+For large n (e.g. n = 1,000,000), multiple inductive samples show near-zero variance — a maximally stable (but still fallible) habit that "Goldbach holds with very high confidence" within the framework.
 
-## Customize parameters in the __main__ block:python
+In Peircean terms, this is **not** final truth, but the **limit of current inquiry** — explanatory, convergent, and open to future surprise.
 
-    - n=26,                    # small for visualization
-    - chain_prob=0.7,          # depth of hypostatic abstraction chaining
-    - synechism_prob=0.5,      # continuity / probabilistic flow between structures
-    - sample_count=8,          # number of inductive probes
-    - variance_threshold=0.05  # fallibilism threshold for induction
+## The Symbolic Translation Step
 
-
-Small n (e.g. 26): generates interactive plot + saves PNG
-Large n (e.g. 1,000,000): skips plot (too large), shows rich ASCII diagram + algebraic bound
-All output logged to peirce_inquiry.log
-
-
-
-## Example Results (n = 26)
-
-### 1. Probabilistic Graph Visualization
-For small n like 26, the script generates an interactive plot and saves it as `peirce_graph_n26.png`.
-
-![Peircean Goldbach Diagram for n=26](https://github.com/gitfrid/CS-Peirce/blob/main/logs/CS%20Peirce%20Graphs%20n26.png)
-
-**What the graph shows**:
-- Central green node: **26** (the icon/problem)
-- Blue nodes: individual primes (p3, q23, p7, q19, p13, q13)
-- Orange nodes: modal hypotheses (RH_noise, no_pair)
-- Edges labeled with Peircean relations: `sum_to`, `contains`, `synechistic_flow`, `reifies`, `higher_reifies`, `has`, etc.
-- Abstraction chains (abs_sum_to → abs_abs_sum_to) show hypostatic abstraction
-- Cuts (broken/solid lines) represent negation, possibility, governance
-
-This is the **evolved habit graph** — the living result of Peircean deduction + induction within the internal inquiry mode.
-
-### 2. Existential Graph Lemmas (Beta/Gamma/Delta)
-These are shown as detailed text/ascii-art in console and log file — pure diagrammatic reasoning:
-
-- **Lemma 1** — Beta relational existence of two primes summing to n
-- **Lemma 2** — Gamma broken-cut possibility (p determines q)
-- **Lemma 3** — Beta symmetry collapse (when p=q)
-- **Lemma 4** — Delta tinctured governance (rules for elevating to universal habit)
-
-Full ascii-art lemmas are preserved in `peirce_inquiry.log` — ready to copy for papers or books.
-
-### 3. Algebraic Translation (for formal mathematicians)
-Always generated — the Hardy–Littlewood lower bound for the number of representations G(n):
-
-**The script independently reconstructs this classic asymptotic formula (Hardy–Littlewood, 1923) as the natural symbolic endpoint of its Peircean inquiry cycle — arriving at the same well-known result through its own abductive–deductive–inductive path, purely by translating the evolved diagrammatic habits into conventional mathematical notation.**
+After the full inquiry cycle, the script **recognizes** that its stabilized habit aligns with the famous **Hardy–Littlewood asymptotic formula** (1923) for the number of representations G(n):
 
 $$
-\frac{2 C n \prod_{p=3}^{\infty} \frac{p - 2}{p - 1}}{\log^2 n} - \text{Error(RH)}
+G(n) \sim 2\, C_2 \prod_{p>2} \frac{p-2}{p-1} \cdot \frac{n}{(\ln n)^2} \quad \text{(with RH-dependent error term)}
 $$
 
-**Alternative path** (Deuring–Heilbronn phenomenon):
-> If the Riemann Hypothesis is false, a Siegel zero creates even stronger repulsion among primes, ensuring G(n) > 0.
+- The **singular product** \(\prod_{p>2} \frac{p-2}{p-1}\) and the **twin prime constant** \(C_2 \approx 0.6601618158\) are the classical form used by number theorists.
+- The script does **not** derive this expression from first principles (that would require recreating 20th-century analytic number theory).  
+- Instead, it **independently converges** to the same **conviction** through its own diagrammatic/probabilistic path, then **translates** the resulting habit into the standard symbolic language mathematicians publish.
 
-This symbolic expression is the bridge from Peircean diagrammatic habits to modern analytic number theory
+Alternative consideration (Deuring–Heilbronn phenomenon):  
+> If the Riemann Hypothesis is false, a Siegel zero would create even stronger repulsion among primes, further ensuring G(n) > 0.
 
-Its purpose is to:
+This step bridges the **Peircean world of diagrams and habits** to the **conventional notation of analytic number theory** — not as a proof, but as an explanatory and convergent endpoint.
 
-model Peirce’s theory of mathematical inquiry
-explore diagrammatic reasoning computationally
-translate abductive–inductive results into standard mathematical language for interpretation, not certification
+## Customize parameters in the __main__ block
 
-## Dependencies
-
-pip install numpy sympy networkx matplotlib
+```python
+N_VALUE = 1000000                  # Even number to test (Goldbach n)
+NUM_VERIFICATION_RUNS = 3          # Number of independent runs for reliability
+MAX_PAIRS_LIMIT = 100              # Max prime pairs added to graph (memory safety)
+SAMPLE_COUNT = 8                   # Initial inductive samples
+VARIANCE_THRESHOLD = 0.05          # Fallibilism threshold for adjustment
+CHAIN_PROB = 0.7                   # Depth of hypostatic abstraction chaining
+SYNECHISM_PROB = 0.5               # Continuity/probabilistic flow
+ABSTRACTION_DEPTH_MAX = 3          # Max chained abstractions

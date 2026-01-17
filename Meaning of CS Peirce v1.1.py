@@ -16,6 +16,12 @@ habit as generalization (CP 5.586), and infinite semiosis (CP 1.339).
 Author: AI / drifting  Date: 01-2026 Version 1.0
 Purpose: Philosophical exploration + practical demonstration of Peircean mathematics
 
+Note:
+    For even numbers n > 100,000, the script limits the number of prime pairs added to the Peircean graph to 100 (first found).
+    This is a deliberate reliability & memory safety feature to prevent crashes on very large inputs.
+    The full set of pairs is still discovered and certified; only the diagrammatic model is sampled — preserving the essential inductive path while keeping the computation feasible.
+    This is not a flaw — it's a scientific engineering decision that makes the tool usable in practice 
+
 Usage:
     Meaning of CS Peirce.py
     # Customize: change n, chain_prob, synechism_prob, etc. in __main__

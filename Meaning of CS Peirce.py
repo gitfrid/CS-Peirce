@@ -43,7 +43,7 @@ from datetime import datetime
 # LOGGING SETUP – captures ALL print output to file
 # ─────────────────────────────────────────────
 
-log_filename = r"C:\CS Peirce\peirce_inquiry.log"
+log_filename = r"C:\github\CS-Peirce\peirce_inquiry_n16.log"
 
 logging.basicConfig(
     filename=log_filename,
@@ -467,8 +467,8 @@ class PeirceGraph:
             print("Visualization libraries not installed – skipping graphical output.")
             return
 
-        if self.n > 10000:  # Safety threshold
-            print(f"Graph for n={self.n} too large ({len(self.nodes)} nodes) – skipping visualization to avoid crash.")
+        if self.n > 10000:
+            print(f"Graph for n={self.n} too large ({len(self.nodes)} nodes) – skipping visualization.")
             return
 
         try:
@@ -488,10 +488,10 @@ class PeirceGraph:
 
             plt.title(f"Peircean Goldbach Diagram for n={self.n}")
 
-            # SAVE AS PNG
+            # Explicitly force PNG format
             png_filename = f"peirce_graph_n{self.n}.png"
-            plt.savefig(png_filename, dpi=300, bbox_inches='tight')
-            print(f"Graph saved as: {png_filename}")
+            plt.savefig(png_filename, format='png', dpi=300, bbox_inches='tight')
+            print(f"Graph saved as PNG: {png_filename}")
 
             plt.show()
         except Exception as e:
@@ -573,5 +573,5 @@ def peircean_goldbach_inquiry(
 
 if __name__ == "__main__":
     print(f"Starting Meaning of CS Peirce at {datetime.now():%Y-%m-%d %H:%M:%S}")
-    peircean_goldbach_inquiry(n=1000000, chain_prob=0.7, synechism_prob=0.5)
+    peircean_goldbach_inquiry(n=26, chain_prob=0.7, synechism_prob=0.5)
     print(f"Inquiry finished. Full log saved to: peirce_inquiry.log")

@@ -2,13 +2,14 @@
 
 A living philosophical and mathematical tribute to **Charles Sanders Peirce** (1839–1914) — Mathematician, Logician, the founder of modern semiotics, and the logic of inquiry.
 
-This project implements a **complete Peircean mathematical inquiry engine** focused on the Goldbach conjecture (easily extensible to other problems).
+This project implements a **integrated Peircean mathematical inquiry engine** focused on the Goldbach conjecture (easily extensible to other problems).
 
 It faithfully follows Peirce's triadic cycle of reasoning:
 - **Abduction** — creative, fallible hypothesis generation
 - **Deduction** — diagrammatic unfolding through existential graphs (Beta/Gamma/Delta) and probabilistic evolution
 - **Induction** — formation of stable habits with self-reflection, variance analysis, and fallibilism
-- **Symbolic translation** — final algebraic expression for the mathematical community (Hardy–Littlewood bound + Deuring–Heilbronn alternative)
+- **Symbolic translation** — algebraic mathematical expression (Hardy–Littlewood bound + Deuring–Heilbronn alternative)
+  <br>This translation is explanatory and contextual, not a proof or derivation
 
 Inspired by Peirce's core ideas:
 - Diagrammatic reasoning as the essence of necessary inference (CP 5.162)
@@ -20,7 +21,7 @@ Inspired by Peirce's core ideas:
 - Probabilistic graph evolution with chained hypostatic abstractions, synechistic flows, theorematic symmetry, and modal cuts
 - Pure Existential Graphs (Beta/Gamma/Delta) as detailed text/ascii-art lemmas
 - Self-reflective induction — automatically adjusts sample count on high variance
-- Symbolic Hardy–Littlewood lower bound (via SymPy) with RH error term + Deuring–Heilbronn alternative
+- Symbolic transcription of the Hardy–Littlewood lower bound (via SymPy) with RH error term + Deuring–Heilbronn alternative
 - Full logging of all output (including lemmas) to `peirce_inquiry.log`
 - Beautiful visual graph plot + automatic PNG save for small n (≤ 10,000)
 
@@ -60,7 +61,7 @@ For small n like 26, the script generates an interactive plot and saves it as `p
 - Abstraction chains (abs_sum_to → abs_abs_sum_to) show hypostatic abstraction
 - Cuts (broken/solid lines) represent negation, possibility, governance
 
-This is the **evolved habit graph** — the living result of Peircean deduction + induction.
+This is the **evolved habit graph** — the living result of Peircean deduction + induction within the internal inquiry mode.
 
 ### 2. Existential Graph Lemmas (Beta/Gamma/Delta)
 These are shown as detailed text/ascii-art in console and log file — pure diagrammatic reasoning:
@@ -82,4 +83,12 @@ $$
 **Alternative path** (Deuring–Heilbronn phenomenon):
 > If the Riemann Hypothesis is false, a Siegel zero creates even stronger repulsion among primes, ensuring G(n) > 0.
 
-This symbolic expression is the bridge from Peircean diagrammatic habits to modern analytic number theory — ready for papers, proof assistants, or referee reports.
+This symbolic expression is the bridge from Peircean diagrammatic habits to modern analytic number theory
+
+
+
+Its purpose is to:
+
+model Peirce’s theory of mathematical inquiry
+explore diagrammatic reasoning computationally
+translate abductive–inductive results into standard mathematical language for interpretation, not certification

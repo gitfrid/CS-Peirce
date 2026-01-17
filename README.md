@@ -26,7 +26,7 @@ Inspired by Peirce's core ideas:
 - Pure Existential Graphs (Beta/Gamma/Delta) as detailed text/ascii-art lemmas
 - Self-reflective induction — automatically adjusts sample count on high variance
 - Symbolic transcription of the Hardy–Littlewood lower bound (via SymPy) with RH error term + Deuring–Heilbronn alternative
-- Full logging of all output (including lemmas) to `peirce_inquiry.log`
+- Full logging of all output (including lemmas) 
 - Beautiful visual graph plot + automatic PNG save for small n (≤ 10,000)
 
 > **Prototype Py code**: [Meaning of CS Peirce.py](https://github.com/gitfrid/CS-Peirce/blob/main/Meaning%20of%20CS%20Peirce.py)

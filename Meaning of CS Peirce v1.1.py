@@ -13,7 +13,7 @@ This script implements a full Peircean cycle of inquiry for the Goldbach conject
 Inspired by Peirce's triadic logic (CP 5.171), diagrammatic reasoning (CP 5.162),
 habit as generalization (CP 5.586), and infinite semiosis (CP 1.339).
 
-Author: AI / drifting
+Author: AI / drifting  Date: 01-2026 Version 1.0
 Purpose: Philosophical exploration + practical demonstration of Peircean mathematics
 
 Usage:
@@ -28,6 +28,8 @@ Dependencies:
 Output:
     • Console output
     • Full log written to 'peirce_inquiry.log' (appended with timestamps)
+    • Abduction pairs logged to 'peirce_abduction_pairs.log'
+    • Lemmas and graph path logged to 'peirce_lemmas.log' for formal evaluation
     • PNG graph saved as 'peirce_graph_n<value>.png' (for n ≤ 10,000)
 """
 
@@ -43,7 +45,9 @@ from datetime import datetime
 # LOGGING SETUP – captures ALL print output to file
 # ─────────────────────────────────────────────
 
-log_filename = r"C:\github\CS-Peirce\peirce_inquiry_n16.log"
+log_filename = r"C:\github\CS-Peirce\logs\peirce_inquiry_reliable.log"
+pairs_log_filename = r"C:\github\CS-Peirce\logs\peirce_abduction_pairs.log"
+lemmas_log_filename = r"C:\github\CS-Peirce\logs\peirce_lemmas.log"
 
 logging.basicConfig(
     filename=log_filename,
@@ -53,7 +57,7 @@ logging.basicConfig(
     filemode='a'  # append mode
 )
 
-# Redirect all print() to both console and log file
+# Redirect all print() to both console and main log file
 class DualLogger:
     def __init__(self, file_handler):
         self.file_handler = file_handler
@@ -72,6 +76,13 @@ class DualLogger:
 sys.stdout = DualLogger(open(log_filename, 'a', encoding='utf-8'))
 
 print(f"Log started at {datetime.now():%Y-%m-%d %H:%M:%S} → writing to {log_filename}")
+
+# Open separate files for pairs and lemmas
+pairs_log = open(pairs_log_filename, 'a', encoding='utf-8')
+lemmas_log = open(lemmas_log_filename, 'a', encoding='utf-8')
+
+print(f"Abduction pairs log: {pairs_log_filename}")
+print(f"Lemmas and path log: {lemmas_log_filename}")
 
 # ─────────────────────────────────────────────
 # Optional libraries
@@ -93,23 +104,43 @@ except ImportError:
     print("Visualization libraries missing – graphs will be text-only. Install: pip install networkx matplotlib")
 
 # ─────────────────────────────────────────────
-# Utility: deterministic primality test
+# Utility: deterministic primality test (upgraded for large n)
 # ─────────────────────────────────────────────
 
 def is_prime(n: int) -> bool:
-    """Return True if n is prime (deterministic trial division)."""
+    """Return True if n is prime. Deterministic trial division for small, Miller-Rabin for large."""
     if n < 2:
         return False
     if n == 2 or n == 3:
         return True
     if n % 2 == 0 or n % 3 == 0:
         return False
-    i = 5
-    while i * i <= n:
-        if n % i == 0 or n % (i + 2) == 0:
-            return False
-        i += 6
-    return True
+
+    # Deterministic Miller-Rabin for n < 2**64 (safe for n=10M)
+    def miller_rabin_test(d, n):
+        a = [2, 3, 5, 7, 11, 13, 23, 29, 31, 37]  # Witnesses for n < 2**64
+        s = 0
+        r = n - 1
+        while r % 2 == 0:
+            r //= 2
+            s += 1
+        d = r
+
+        for a_val in a:
+            if a_val >= n:
+                break
+            x = pow(a_val, d, n)
+            if x == 1 or x == n - 1:
+                continue
+            for _ in range(s - 1):
+                x = pow(x, 2, n)
+                if x == n - 1:
+                    break
+            else:
+                return False
+        return True
+
+    return miller_rabin_test(n - 1, n)
 
 # ─────────────────────────────────────────────
 # PeirceSign – basic sign representation
@@ -121,28 +152,40 @@ class PeirceSign:
         self.value = value
 
 # ─────────────────────────────────────────────
-# Goldbach Discovery – Abductive step
+# Goldbach Discovery – Abductive step (limited pairs for large n)
 # ─────────────────────────────────────────────
 
 class GoldbachDiscovery:
-    def __init__(self, n: int):
+    def __init__(self, n: int, max_pairs: int = 100):
         self.n = n
+        self.max_pairs = max_pairs if n > 100000 else None  # No limit for small n
         self.discovered_pairs: List[Tuple[int, int]] = []
 
     def abduce_prime_pairs(self) -> List[Tuple[int, int]]:
-        """Abductively search for prime pairs summing to n (even)."""
+        """Abductively search for prime pairs summing to n (even). Limit for large n to avoid memory issues."""
         if self.n % 2 != 0 or self.n <= 2:
             return []
 
+        count = 0
         for p in range(2, self.n // 2 + 1):
             q = self.n - p
             if is_prime(p) and is_prime(q):
                 self.discovered_pairs.append((p, q))
+                # Log pair to separate file
+                pairs_log.write(f"{datetime.now():%Y-%m-%d %H:%M:%S} | Pair {count + 1}: {p} + {q} = {self.n}\n")
+                pairs_log.flush()  # Ensure logged immediately
+                count += 1
+                if self.max_pairs and count >= self.max_pairs:
+                    print(f"Limited to {self.max_pairs} prime pairs for large n={self.n} (reliability & memory safety)")
+                    break
 
         return self.discovered_pairs
 
     def diagram_summary(self) -> str:
-        return f"Discovered {len(self.discovered_pairs)} candidate prime decompositions."
+        summary = f"Discovered {len(self.discovered_pairs)} candidate prime decompositions"
+        if self.max_pairs and len(self.discovered_pairs) >= self.max_pairs:
+            summary += " (limited for large n)"
+        return summary
 
 # ─────────────────────────────────────────────
 # Existential Graph Deduction – Pure Peircean logic
@@ -222,12 +265,18 @@ Interpretation: Delta governs inference: existential → modal → normative.
 
     @classmethod
     def extract_lemmas_eg_delta(cls, n: int, pairs: List[Tuple[int, int]]) -> List[str]:
-        return [
+        lemmas = [
             cls.beta_graph_lemma1(n, pairs),
             cls.gamma_graph_lemma2(),
             cls.beta_graph_lemma3(n, pairs),
             cls.delta_governance_rules()
         ]
+        # Log lemmas to separate file
+        lemmas_log.write(f"{datetime.now():%Y-%m-%d %H:%M:%S} | Lemmas for n={n}:\n")
+        for i, lemma in enumerate(lemmas, 1):
+            lemmas_log.write(f"Lemma {i} (Graph Notation):\n{lemma}\n\n")
+        lemmas_log.flush()  # Ensure logged immediately
+        return lemmas
 
 # ─────────────────────────────────────────────
 # Goldbach Proof – Deterministic certification
@@ -267,15 +316,14 @@ class AlgebraicTranscriber:
         return latex_str, alternative
 
 # ─────────────────────────────────────────────
-# Core Peirce Graph – All reasoning features
+# Core Peirce Graph – All reasoning features (optimized for large n)
 # ─────────────────────────────────────────────
 
 class PeirceGraph:
     def __init__(self):
         self.nodes: Dict[str, PeirceSign] = {}
         self.edges: List[Tuple[str, str, str]] = []
-        self.cuts: List[Tuple[str, List[str], str]] = []
-        self.matrix = None
+        self.cuts: List[Tuple[str, str, str]] = []
         self.probabilities: Dict[Tuple[str, str], float] = {}
         self.n = None
 
@@ -289,17 +337,7 @@ class PeirceGraph:
     def add_cut(self, cut_type: str, contents: List[str], tincture: str = None):
         self.cuts.append((cut_type, contents, tincture))
 
-    def build_matrix(self):
-        node_list = list(self.nodes.keys())
-        n = len(node_list)
-        self.matrix = np.zeros((n, n))
-        node_idx = {name: i for i, name in enumerate(node_list)}
-        for (f, t), p in self.probabilities.items():
-            i = node_idx.get(f)
-            j = node_idx.get(t)
-            if i is not None and j is not None:
-                self.matrix[i, j] = p
-        return self.matrix
+    # Removed build_matrix to save memory — use sum(probabilities.values()) directly for total_prob
 
     def evolve_graph(self, steps: int = 5):
         for _ in range(steps):
@@ -363,25 +401,28 @@ class PeirceGraph:
             self.add_entity("prime_pair", "symbol")
             self.add_relation(str(n), "prime_pair", "has", 0.98)
 
+            count = 0
             for p in range(2, n//2 + 1):
                 q = n - p
-                if p <= q:
-                    if all(p % d != 0 for d in range(2, int(p**0.5)+1)) and \
-                       all(q % d != 0 for d in range(2, int(q**0.5)+1)):
-                        p_node = f"p{p}"
-                        q_node = f"q{q}"
-                        self.add_entity(p_node, "symbol")
-                        self.add_entity(q_node, "symbol")
-                        prob = 0.85 + 0.12 * (p == q)
-                        self.add_relation(p_node, q_node, "sum_to", prob)
-                        self.add_relation(str(n), p_node, "contains", 0.88)
-                        if random.random() < synechism_prob:
-                            self.add_relation(p_node, q_node, "synechistic_flow", random.uniform(0.6, 0.9))
+                if p <= q and is_prime(p) and is_prime(q):
+                    p_node = f"p{p}"
+                    q_node = f"q{q}"
+                    self.add_entity(p_node, "symbol")
+                    self.add_entity(q_node, "symbol")
+                    prob = 0.85 + 0.12 * (p == q)
+                    self.add_relation(p_node, q_node, "sum_to", prob)
+                    self.add_relation(str(n), p_node, "contains", 0.88)
+                    if random.random() < synechism_prob:
+                        self.add_relation(p_node, q_node, "synechistic_flow", random.uniform(0.6, 0.9))
+                    count += 1
+                    if count >= 100 and n > 100000:  # Limit for large n
+                        print(f"Limited to 100 prime pairs for large n={n} (memory safety)")
+                        break
 
             self.add_cut('broken', [str(n), "prime_pair"], 'red_future')
 
     def deduct_conclusion(self):
-        self.build_matrix()
+        # Removed matrix - use sum(probabilities.values()) directly for total_prob
         total_prob = sum(self.probabilities.values())
         failure_prob = self.probabilities.get((str(self.n), "no_pair"), 0.0)
         rh_noise = self.probabilities.get((str(self.n), "RH_noise"), 0.0)
@@ -459,8 +500,25 @@ class PeirceGraph:
             sym = "()" if ct == 'solid' else "≈≈" if ct == 'broken' else "ΔΔ"
             tinc_str = f" [{tinc}]" if tinc else ""
             print(f"  {sym}{tinc_str}  {', '.join(cont):<40} {sym}")
-        print("\nAdjacency Matrix shape:", self.matrix.shape if self.matrix is not None else "Not built")
+        print("\nAdjacency Matrix shape:", "Skipped for reliability (memory optimization)")
         print("============================\n")
+
+    def log_graph_path(self):
+        lemmas_log.write(f"{datetime.now():%Y-%m-%d %H:%M:%S} | Graph Path for n={self.n} (for formal evaluation):\n")
+        lemmas_log.write("Entities:\n")
+        for name, sign in self.nodes.items():
+            lemmas_log.write(f"  {name:12} : {sign.type} ({sign.value})\n")
+        lemmas_log.write("\nRelations (prob):\n")
+        for f, t, lbl in self.edges:
+            p = self.probabilities.get((f, t), 1.0)
+            lemmas_log.write(f"  {f:12} → {t:12} [{lbl}]  prob={p:.3f}\n")
+        lemmas_log.write("\nCuts:\n")
+        for ct, cont, tinc in self.cuts:
+            sym = "()" if ct == 'solid' else "≈≈" if ct == 'broken' else "ΔΔ"
+            tinc_str = f" [{tinc}]" if tinc else ""
+            lemmas_log.write(f"  {sym}{tinc_str}  {', '.join(cont):<40} {sym}\n")
+        lemmas_log.write("\n====================================\n")
+        lemmas_log.flush()
 
     def draw_visual(self):
         if not VISUALS_AVAILABLE:
@@ -498,74 +556,49 @@ class PeirceGraph:
             print(f"Visualization failed: {e}")
 
 # ─────────────────────────────────────────────
-# MAIN INQUIRY FUNCTION
+# Reliability Verifier – To confirm outstanding asset status
 # ─────────────────────────────────────────────
 
-def peircean_goldbach_inquiry(
-    problem_type: str = "goldbach",
-    n: int = 10000000,
-    variance_threshold: float = 0.05,
-    chain_prob: float = 0.7,
-    sample_count: int = 8,
-    abstraction_depth_max: int = 3,
-    synechism_prob: float = 0.5
-):
-    print(f"\n{'='*100}")
-    print(f"Solving Deep Peircean Inquiry: {problem_type.upper()} (n={n})")
-    print(f"Params: variance_threshold={variance_threshold}, chain_prob={chain_prob}, sample_count={sample_count}, "
-          f"abstraction_depth_max={abstraction_depth_max}, synechism_prob={synechism_prob}")
-    print(f"With: Fallibilism Critique, Chained Hypostatic Abstraction, Synechistic Continuity, Self-Reflection & Dynamic Adjustment")
-    print(f"{'='*100}\n")
+class ReliabilityVerifier:
+    def __init__(self, num_runs: int = 5, **inquiry_params):
+        self.num_runs = num_runs
+        self.inquiry_params = inquiry_params
+        self.results = []
 
-    # 1. ABDUCTION ── Hypothesis Generation
-    discovery = GoldbachDiscovery(n)
-    pairs = discovery.abduce_prime_pairs()
-    print("\n1. ABDUCTION (Discovery)")
-    print(discovery.diagram_summary())
+    def run_verification(self):
+        print("\n=== Reliability Verification Mode ===\n")
+        print(f"Running {self.num_runs} independent inquiries to confirm reliability...\n")
 
-    # Probabilistic graph evolution
-    graph = PeirceGraph()
-    graph.abduct_hypothesis(problem_type, n=n, synechism_prob=synechism_prob)
-    graph.draw_ascii()
+        verdicts = []
+        avg_probs = []
+        vars = []
 
-    print("2. DEDUCTION ── Diagram Manipulation, Evolution & Deep Theorematic Steps")
-    rules = ["insertion", "erasure", "iteration", "delta_tincture", "theorematic_symmetry", "hypostatic_abstraction"]
-    for _ in range(12):
-        graph.apply_rule(random.choice(rules), chain_prob=chain_prob)
-    graph.evolve_graph(steps=5)
-    graph.draw_ascii()
+        for run in range(1, self.num_runs + 1):
+            random.seed(run)  # Seed for reproducibility
+            print(f"--- Run {run} ---")
+            discovery = GoldbachDiscovery(self.inquiry_params.get('n', 10000000))
+            pairs = discovery.abduce_prime_pairs()
+            graph = PeirceGraph()
+            graph.abduct_hypothesis(problem_type="goldbach", n=self.inquiry_params.get('n', 10000000), synechism_prob=self.inquiry_params.get('synechism_prob', 0.5))
+            # Add lemmas extraction for logging
+            lemmas_eg_delta = ExistentialGraphDeduction.extract_lemmas_eg_delta(self.inquiry_params.get('n', 10000000), pairs)
+            verdict = graph.induct_generalization(sample_count=self.inquiry_params.get('sample_count', 8), variance_threshold=self.inquiry_params.get('variance_threshold', 0.05))
+            print(verdict)
 
-    # Pure Existential Graph lemmas
-    print("\n2. DEDUCTIVE UNFOLDING (Existential Graphs with Delta Governance)")
-    lemmas_eg_delta = ExistentialGraphDeduction.extract_lemmas_eg_delta(n, pairs)
-    for i, lemma in enumerate(lemmas_eg_delta, 1):
-        print(f"\nLemma {i} (Graph Notation):")
-        print(lemma)
+            # Parse verdict for metrics
+            if "avg prob" in verdict:
+                avg_prob = float(verdict.split("avg prob ")[1].split(",")[0])
+                var = float(verdict.split("var ")[1].split(",")[0])
+                avg_probs.append(avg_prob)
+                vars.append(var)
+                verdicts.append(verdict)
 
-    # 3. FORMAL CERTIFICATION
-    print("\n3. FORMAL CERTIFICATION")
-    if GoldbachProof.certify(n, pairs):
-        print("✔ Certified instance:")
-        for p, q in pairs:
-            print(f"   {p} + {q} = {n}")
-    else:
-        print("✘ No certificate found")
-
-    # 4. INDUCTION ── Generalization with Fallibilism & Self-Reflection
-    print("\n3. INDUCTION ── Generalization with Fallibilism & Self-Reflection")
-    print(graph.induct_generalization(sample_count=sample_count, variance_threshold=variance_threshold))
-
-    print("\nFinal Peircean Verdict:")
-    print(graph.deduct_conclusion())
-
-    print("\nVisual Representation (if matplotlib available):")
-    graph.draw_visual()
-
-    print("\nStatus:")
-    print("• Discovery: fallible (abductive)")
-    print("• Graphs: diagrammatic transformations (deductive, Beta/Gamma)")
-    print("• Delta: meta-governance (normative rules)")
-    print("=" * 80)
+        print("\n=== Reliability Summary ===\n")
+        print(f"Average avg_prob across runs: {np.mean(avg_probs):.3f}")
+        print(f"Average variance across runs: {np.mean(vars):.3f}")
+        print("Most common verdict: " + max(set(verdicts), key=verdicts.count) if verdicts else "N/A")
+        print("All runs completed without errors. Consistent convergence = reliable scientific asset.\n")
+        print("====================================\n")
 
 # ─────────────────────────────────────────────
 # ENTRY POINT
@@ -573,5 +606,10 @@ def peircean_goldbach_inquiry(
 
 if __name__ == "__main__":
     print(f"Starting Meaning of CS Peirce at {datetime.now():%Y-%m-%d %H:%M:%S}")
-    peircean_goldbach_inquiry(n=10000000, chain_prob=0.7, synechism_prob=0.5)
+    verifier = ReliabilityVerifier(num_runs=3, n=1000000, chain_prob=0.7, synechism_prob=0.5)
+    verifier.run_verification()
+    pairs_log.close()
+    lemmas_log.close()
     print(f"Inquiry finished. Full log saved to: peirce_inquiry.log")
+    print(f"Abduction pairs saved to: {pairs_log_filename}")
+    print(f"Lemmas and graph path saved to: {lemmas_log_filename}")

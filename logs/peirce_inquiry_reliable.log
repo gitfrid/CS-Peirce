@@ -1,0 +1,39 @@
+2026-01-17 15:20:59 | Log started at 2026-01-17 15:20:59 → writing to C:\github\CS-Peirce\logs\peirce_inquiry_reliable.log
+2026-01-17 15:20:59 | Abduction pairs log: C:\github\CS-Peirce\logs\peirce_abduction_pairs.log
+2026-01-17 15:20:59 | Lemmas and path log: C:\github\CS-Peirce\logs\peirce_lemmas.log
+2026-01-17 15:21:01 | Starting Meaning of CS Peirce at 2026-01-17 15:21:01
+2026-01-17 15:21:01 | === Reliability Verification Mode ===
+2026-01-17 15:21:01 | Running 3 independent inquiries to confirm reliability...
+2026-01-17 15:21:01 | --- Run 1 ---
+2026-01-17 15:21:01 | Limited to 100 prime pairs for large n=1000000 (reliability & memory safety)
+2026-01-17 15:21:01 | Limited to 100 prime pairs for large n=1000000 (memory safety)
+2026-01-17 15:21:01 | Algebraic Transcription (Hardy–Littlewood bound):
+2026-01-17 15:21:01 | \frac{2 C n \prod_{p=3}^{\infty} \frac{p - 2}{p - 1}}{\log{\left(n \right)}^{2}} - \text{Error(RH)}
+2026-01-17 15:21:01 | Alternative (Deuring–Heilbronn if RH false):
+2026-01-17 15:21:01 | If RH false, Deuring–Heilbronn phenomenon creates stronger repulsion, ensuring G(n) > 0.
+2026-01-17 15:21:01 | Weak generalization (avg prob 0.829, var 0.000, samples 8): Strong necessary conclusion: Goldbach holds with very high confidence.
+2026-01-17 15:21:01 | --- Run 2 ---
+2026-01-17 15:21:01 | Limited to 100 prime pairs for large n=1000000 (reliability & memory safety)
+2026-01-17 15:21:01 | Limited to 100 prime pairs for large n=1000000 (memory safety)
+2026-01-17 15:21:01 | Algebraic Transcription (Hardy–Littlewood bound):
+2026-01-17 15:21:01 | \frac{2 C n \prod_{p=3}^{\infty} \frac{p - 2}{p - 1}}{\log{\left(n \right)}^{2}} - \text{Error(RH)}
+2026-01-17 15:21:01 | Alternative (Deuring–Heilbronn if RH false):
+2026-01-17 15:21:01 | If RH false, Deuring–Heilbronn phenomenon creates stronger repulsion, ensuring G(n) > 0.
+2026-01-17 15:21:01 | Weak generalization (avg prob 0.837, var 0.000, samples 8): Strong necessary conclusion: Goldbach holds with very high confidence.
+2026-01-17 15:21:01 | --- Run 3 ---
+2026-01-17 15:21:01 | Limited to 100 prime pairs for large n=1000000 (reliability & memory safety)
+2026-01-17 15:21:01 | Limited to 100 prime pairs for large n=1000000 (memory safety)
+2026-01-17 15:21:01 | Algebraic Transcription (Hardy–Littlewood bound):
+2026-01-17 15:21:01 | \frac{2 C n \prod_{p=3}^{\infty} \frac{p - 2}{p - 1}}{\log{\left(n \right)}^{2}} - \text{Error(RH)}
+2026-01-17 15:21:01 | Alternative (Deuring–Heilbronn if RH false):
+2026-01-17 15:21:01 | If RH false, Deuring–Heilbronn phenomenon creates stronger repulsion, ensuring G(n) > 0.
+2026-01-17 15:21:01 | Weak generalization (avg prob 0.839, var 0.000, samples 8): Strong necessary conclusion: Goldbach holds with very high confidence.
+2026-01-17 15:21:01 | === Reliability Summary ===
+2026-01-17 15:21:01 | Average avg_prob across runs: 0.835
+2026-01-17 15:21:01 | Average variance across runs: 0.000
+2026-01-17 15:21:01 | Most common verdict: Weak generalization (avg prob 0.837, var 0.000, samples 8): Strong necessary conclusion: Goldbach holds with very high confidence.
+2026-01-17 15:21:01 | All runs completed without errors. Consistent convergence = reliable scientific asset.
+2026-01-17 15:21:01 | ====================================
+2026-01-17 15:21:01 | Inquiry finished. Full log saved to: peirce_inquiry.log
+2026-01-17 15:21:01 | Abduction pairs saved to: C:\github\CS-Peirce\logs\peirce_abduction_pairs.log
+2026-01-17 15:21:01 | Lemmas and graph path saved to: C:\github\CS-Peirce\logs\peirce_lemmas.log

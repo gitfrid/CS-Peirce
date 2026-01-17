@@ -29,6 +29,10 @@ Inspired by Peirce's core ideas:
 > **Result n=16**: [n=16](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/peirce_inquiry%20n16.log)
 > **Result n=1M**: [n=1M](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/peirce_inquiry%201M.log)
 
+## On Validity, Proof, and Induction
+
+This project does not claim to prove the Goldbach conjecture. Instead, it models Charles S. Peirce’s account of how mathematics actually advances: through abductive discovery, diagrammatic deduction, and inductive stabilization of habits. Deterministic verification is performed for each tested instance, while large-n runs (e.g. n = 1,000,000) demonstrate inductive habit saturation—near-zero variance indicating that further inquiry no longer alters the conclusion within this framework. In Peircean terms, this represents a maximally stable but still fallible state of knowledge: explanatory, convergent, and open to revision.
+
 ## Dependencies
 
 pip install numpy sympy networkx matplotlib

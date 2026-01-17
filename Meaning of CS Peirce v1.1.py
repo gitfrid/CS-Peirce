@@ -13,18 +13,19 @@ This script implements a full Peircean cycle of inquiry for the Goldbach conject
 Inspired by Peirce's triadic logic (CP 5.171), diagrammatic reasoning (CP 5.162),
 habit as generalization (CP 5.586), and infinite semiosis (CP 1.339).
 
-Author: AI / drifting  Date: 01-2026 Version 1.0
+Author: AI / Drifting  Date: 01-2026 Version 1.0
 Purpose: Philosophical exploration + practical demonstration of Peircean mathematics
 
 Note:
-    For even numbers n > 100,000, the script limits the number of prime pairs added to the Peircean graph to 100 (first found).
-    This is a deliberate reliability & memory safety feature to prevent crashes on very large inputs.
-    The full set of pairs is still discovered and certified; only the diagrammatic model is sampled — preserving the essential inductive path while keeping the computation feasible.
-    This is not a flaw — it's a scientific engineering decision that makes the tool usable in practice 
+    For even numbers n > large_n_threshold, the script limits the number of prime pairs added to the Peircean graph 
+    to max_pairs_limit (first found). This is a deliberate reliability & memory safety feature to prevent crashes 
+    on very large inputs. The full set of pairs is still discovered and certified; only the diagrammatic model 
+    is sampled — preserving the essential inductive path while keeping the computation feasible.
+    This is not a flaw — it's a scientific engineering decision that makes the tool usable in practice.
 
 Usage:
     Meaning of CS Peirce.py
-    # Customize: change n, chain_prob, synechism_prob, etc. in __main__
+    # Customize parameters in __main__ section below
 
 Dependencies:
     Required: math, numpy, random, typing, logging, datetime
@@ -122,7 +123,7 @@ def is_prime(n: int) -> bool:
     if n % 2 == 0 or n % 3 == 0:
         return False
 
-    # Deterministic Miller-Rabin for n < 2**64 (safe for n=10M)
+    # Deterministic Miller-Rabin for n < 2**64 (safe for n=10M+)
     def miller_rabin_test(d, n):
         a = [2, 3, 5, 7, 11, 13, 23, 29, 31, 37]  # Witnesses for n < 2**64
         s = 0
@@ -158,13 +159,13 @@ class PeirceSign:
         self.value = value
 
 # ─────────────────────────────────────────────
-# Goldbach Discovery – Abductive step (limited pairs for large n)
+# Goldbach Discovery – Abductive step (configurable limit)
 # ─────────────────────────────────────────────
 
 class GoldbachDiscovery:
-    def __init__(self, n: int, max_pairs: int = 100):
+    def __init__(self, n: int, max_pairs_limit: int = 100):
         self.n = n
-        self.max_pairs = max_pairs if n > 100000 else None  # No limit for small n
+        self.max_pairs_limit = max_pairs_limit
         self.discovered_pairs: List[Tuple[int, int]] = []
 
     def abduce_prime_pairs(self) -> List[Tuple[int, int]]:
@@ -181,16 +182,16 @@ class GoldbachDiscovery:
                 pairs_log.write(f"{datetime.now():%Y-%m-%d %H:%M:%S} | Pair {count + 1}: {p} + {q} = {self.n}\n")
                 pairs_log.flush()  # Ensure logged immediately
                 count += 1
-                if self.max_pairs and count >= self.max_pairs:
-                    print(f"Limited to {self.max_pairs} prime pairs for large n={self.n} (reliability & memory safety)")
+                if count >= self.max_pairs_limit:
+                    print(f"Limited to {self.max_pairs_limit} prime pairs for large n={self.n} (reliability & memory safety)")
                     break
 
         return self.discovered_pairs
 
     def diagram_summary(self) -> str:
         summary = f"Discovered {len(self.discovered_pairs)} candidate prime decompositions"
-        if self.max_pairs and len(self.discovered_pairs) >= self.max_pairs:
-            summary += " (limited for large n)"
+        if len(self.discovered_pairs) >= self.max_pairs_limit:
+            summary += f" (limited to max {self.max_pairs_limit})"
         return summary
 
 # ─────────────────────────────────────────────
@@ -329,7 +330,7 @@ class PeirceGraph:
     def __init__(self):
         self.nodes: Dict[str, PeirceSign] = {}
         self.edges: List[Tuple[str, str, str]] = []
-        self.cuts: List[Tuple[str, str, str]] = []
+        self.cuts: List[Tuple[str, List[str], str]] = []
         self.probabilities: Dict[Tuple[str, str], float] = {}
         self.n = None
 
@@ -342,8 +343,6 @@ class PeirceGraph:
 
     def add_cut(self, cut_type: str, contents: List[str], tincture: str = None):
         self.cuts.append((cut_type, contents, tincture))
-
-    # Removed build_matrix to save memory — use sum(probabilities.values()) directly for total_prob
 
     def evolve_graph(self, steps: int = 5):
         for _ in range(steps):
@@ -395,7 +394,7 @@ class PeirceGraph:
                 parent = f"abs_{parent}"
                 current_chain += 1
 
-    def abduct_hypothesis(self, problem_type: str, n: int = 26, synechism_prob: float = 0.3):
+    def abduct_hypothesis(self, problem_type: str, n: int = 26, synechism_prob: float = 0.3, max_pairs_limit: int = 100):
         self.n = n
         self.nodes.clear(); self.edges.clear(); self.cuts.clear(); self.probabilities.clear()
 
@@ -421,14 +420,13 @@ class PeirceGraph:
                     if random.random() < synechism_prob:
                         self.add_relation(p_node, q_node, "synechistic_flow", random.uniform(0.6, 0.9))
                     count += 1
-                    if count >= 100 and n > 100000:  # Limit for large n
-                        print(f"Limited to 100 prime pairs for large n={n} (memory safety)")
+                    if count >= max_pairs_limit:
+                        print(f"Limited to {max_pairs_limit} prime pairs for large n={n} (reliability & memory safety)")
                         break
 
             self.add_cut('broken', [str(n), "prime_pair"], 'red_future')
 
     def deduct_conclusion(self):
-        # Removed matrix - use sum(probabilities.values()) directly for total_prob
         total_prob = sum(self.probabilities.values())
         failure_prob = self.probabilities.get((str(self.n), "no_pair"), 0.0)
         rh_noise = self.probabilities.get((str(self.n), "RH_noise"), 0.0)
@@ -552,7 +550,6 @@ class PeirceGraph:
 
             plt.title(f"Peircean Goldbach Diagram for n={self.n}")
 
-            # Explicitly force PNG format
             png_filename = f"peirce_graph_n{self.n}.png"
             plt.savefig(png_filename, format='png', dpi=300, bbox_inches='tight')
             print(f"Graph saved as PNG: {png_filename}")
@@ -582,16 +579,17 @@ class ReliabilityVerifier:
         for run in range(1, self.num_runs + 1):
             random.seed(run)  # Seed for reproducibility
             print(f"--- Run {run} ---")
-            discovery = GoldbachDiscovery(self.inquiry_params.get('n', 10000000))
+            discovery = GoldbachDiscovery(self.inquiry_params.get('n', 1000000), max_pairs_limit=self.inquiry_params.get('max_pairs_limit', 100))
             pairs = discovery.abduce_prime_pairs()
             graph = PeirceGraph()
-            graph.abduct_hypothesis(problem_type="goldbach", n=self.inquiry_params.get('n', 10000000), synechism_prob=self.inquiry_params.get('synechism_prob', 0.5))
-            # Add lemmas extraction for logging
-            lemmas_eg_delta = ExistentialGraphDeduction.extract_lemmas_eg_delta(self.inquiry_params.get('n', 10000000), pairs)
-            verdict = graph.induct_generalization(sample_count=self.inquiry_params.get('sample_count', 8), variance_threshold=self.inquiry_params.get('variance_threshold', 0.05))
+            graph.abduct_hypothesis(problem_type="goldbach", n=self.inquiry_params.get('n', 1000000), 
+                                    synechism_prob=self.inquiry_params.get('synechism_prob', 0.5),
+                                    max_pairs_limit=self.inquiry_params.get('max_pairs_limit', 100))
+            lemmas_eg_delta = ExistentialGraphDeduction.extract_lemmas_eg_delta(self.inquiry_params.get('n', 1000000), pairs)
+            verdict = graph.induct_generalization(sample_count=self.inquiry_params.get('sample_count', 8), 
+                                                  variance_threshold=self.inquiry_params.get('variance_threshold', 0.05))
             print(verdict)
 
-            # Parse verdict for metrics
             if "avg prob" in verdict:
                 avg_prob = float(verdict.split("avg prob ")[1].split(",")[0])
                 var = float(verdict.split("var ")[1].split(",")[0])
@@ -607,15 +605,38 @@ class ReliabilityVerifier:
         print("====================================\n")
 
 # ─────────────────────────────────────────────
-# ENTRY POINT
+# ENTRY POINT – All configurable parameters here
 # ─────────────────────────────────────────────
 
 if __name__ == "__main__":
+    # ── CONFIGURABLE PARAMETERS ──
+    N_VALUE = 100000000                # The even number to test (Goldbach n)
+    NUM_VERIFICATION_RUNS = 3          # How many independent runs for reliability check
+    MAX_PAIRS_LIMIT = 100              # Max prime pairs added to graph (memory safety)
+    SAMPLE_COUNT = 8                   # Initial number of inductive samples
+    VARIANCE_THRESHOLD = 0.05          # Threshold for self-reflection adjustment
+    CHAIN_PROB = 0.7                   # Probability of continuing hypostatic abstraction chain
+    SYNECHISM_PROB = 0.5               # Probability of adding synechistic_flow relation
+    ABSTRACTION_DEPTH_MAX = 3          # Max depth of chained abstractions
+    # ─────────────────────────────────
+
     print(f"Starting Meaning of CS Peirce at {datetime.now():%Y-%m-%d %H:%M:%S}")
-    verifier = ReliabilityVerifier(num_runs=3, n=1000000, chain_prob=0.7, synechism_prob=0.5)
+    print(f"Parameters: n={N_VALUE}, max_pairs_limit={MAX_PAIRS_LIMIT}")
+
+    verifier = ReliabilityVerifier(
+        num_runs=NUM_VERIFICATION_RUNS,
+        n=N_VALUE,
+        chain_prob=CHAIN_PROB,
+        synechism_prob=SYNECHISM_PROB,
+        sample_count=SAMPLE_COUNT,
+        variance_threshold=VARIANCE_THRESHOLD,
+        abstraction_depth_max=ABSTRACTION_DEPTH_MAX,
+        max_pairs_limit=MAX_PAIRS_LIMIT
+    )
     verifier.run_verification()
+
     pairs_log.close()
     lemmas_log.close()
-    print(f"Inquiry finished. Full log saved to: peirce_inquiry.log")
+    print(f"Inquiry finished. Full log saved to: {log_filename}")
     print(f"Abduction pairs saved to: {pairs_log_filename}")
     print(f"Lemmas and graph path saved to: {lemmas_log_filename}")

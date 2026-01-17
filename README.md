@@ -26,7 +26,7 @@ Inspired by Peirce's core ideas:
 - Beautiful visual graph plot + automatic PNG save for small n (≤ 10,000)
 
 > **Prototype Py code**: [Meaning of CS Peirce.py](https://github.com/gitfrid/CS-Peirce/blob/main/Meaning%20of%20CS%20Peirce.py)
-> **Result :** [n=16](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/peirce_inquiry%20n16.log)
+> **Result :** [n=16](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/peirce_inquiry%20n26.log)
 > **Result :** [n=1M](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/peirce_inquiry%201M.log)
 
 ## On Validity, Proof, and Induction

@@ -27,7 +27,7 @@ Inspired by Peirce's core ideas:
 
 > **Python code**: [Meaning of CS Peirce.py](https://github.com/gitfrid/CS-Peirce/blob/main/Meaning%20of%20CS%20Peirce.py)
 > **Result n=16**: [n=16](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/peirce_inquiry%20n16.log)
-> **Result n=1M**: [n=1M](https://github.com/gitfrid/CS-Peirce/blob/main/peirce_inquiry%20n16.log)
+> **Result n=1M**: [n=1M](https://raw.githubusercontent.com/gitfrid/CS-Peirce/refs/heads/main/peirce_inquiry%201M.log)
 
 ## Dependencies
 

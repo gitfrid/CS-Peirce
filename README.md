@@ -79,7 +79,7 @@ Full ascii-art lemmas are preserved in `peirce_inquiry.log` — ready to copy fo
 ### 3. Algebraic Translation (for formal mathematicians)
 Always generated — the Hardy–Littlewood lower bound for the number of representations G(n):
 
-**The script correctly reproduces this famous formula (Hardy–Littlewood, 1923) as the symbolic endpoint of its Peircean inquiry process — reconstructing and symbolically expressing this well-known asymptotic formula by translating the diagrammatic/habit-based reasoning into the standard language of analytic number theory.**
+**The script independently reconstructs this classic asymptotic formula (Hardy–Littlewood, 1923) as the natural symbolic endpoint of its Peircean inquiry cycle — arriving at the same well-known result through its own abductive–deductive–inductive path, purely by translating the evolved diagrammatic habits into conventional mathematical notation.**
 
 $$
 \frac{2 C n \prod_{p=3}^{\infty} \frac{p - 2}{p - 1}}{\log^2 n} - \text{Error(RH)}

@@ -4,6 +4,10 @@ A living philosophical and mathematical tribute to **Charles Sanders Peirce** (1
 
 This project implements a **integrated Peircean mathematical inquiry engine** focused on the Goldbach conjecture (easily extensible to other problems).
 
+**[The Outstanding Meaning of This Script Wiki→](https://github.com/gitfrid/CS-Peirce/wiki/The-Outstanding-Meaning-of-This-Script)**
+
+(You can also explore other wiki pages for usage details, technical notes, and more reflections on Peirce's philosophy in computation.)
+
 It faithfully follows Peirce's triadic cycle of reasoning:
 - **Abduction** — creative, fallible hypothesis generation
 - **Deduction** — diagrammatic unfolding through existential graphs (Beta/Gamma/Delta) and probabilistic evolution

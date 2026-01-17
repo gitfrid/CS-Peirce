@@ -24,7 +24,7 @@ Inspired by Peirce's core ideas:
 - Full logging of all output (including lemmas) to `peirce_inquiry.log`
 - Beautiful visual graph plot + automatic PNG save for small n (≤ 10,000)
 
-> **Python code**: [AG) bias necessity falsification rmst.py](https://github.com/gitfrid/CzechFOI-DRATE-OPENSCI/blob/main/Py%20Scripts/AG%29%20Diagnostics%20bias%20necessity%20falsification%20rmst.py)
+> **Python code**: [Meaning of CS Peirce.py](https://github.com/gitfrid/CS-Peirce/blob/main/Meaning%20of%20CS%20Peirce.py)
 
 ## Dependencies
 

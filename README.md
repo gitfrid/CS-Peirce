@@ -88,12 +88,12 @@ $$
 
 This symbolic expression is the bridge from Peircean diagrammatic habits to modern analytic number theory
 
-## Dependencies
-
-pip install numpy sympy networkx matplotlib
-
 Its purpose is to:
 
 model Peirce’s theory of mathematical inquiry
 explore diagrammatic reasoning computationally
 translate abductive–inductive results into standard mathematical language for interpretation, not certification
+
+## Dependencies
+
+pip install numpy sympy networkx matplotlib

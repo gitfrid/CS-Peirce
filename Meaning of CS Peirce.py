@@ -13,7 +13,7 @@ This script implements a full Peircean cycle of inquiry for the Goldbach conject
 Inspired by Peirce's triadic logic (CP 5.171), diagrammatic reasoning (CP 5.162),
 habit as generalization (CP 5.586), and infinite semiosis (CP 1.339).
 
-Author: AI / in collaboration with drifting
+Author: AI / drifting
 Purpose: Philosophical exploration + practical demonstration of Peircean mathematics
 
 Usage:

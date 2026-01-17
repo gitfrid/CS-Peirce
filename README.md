@@ -54,7 +54,7 @@ All output logged to peirce_inquiry.log
 ### 1. Probabilistic Graph Visualization
 For small n like 26, the script generates an interactive plot and saves it as `peirce_graph_n26.png`.
 
-![Peircean Goldbach Diagram for n=26](https://github.com/gitfrid/CS-Peirce/blob/main/CS%20Peirce%20Graphs%20n16.png)
+![Peircean Goldbach Diagram for n=26](https://github.com/gitfrid/CS-Peirce/blob/main/CS%20Peirce%20Graphs%20n26.png)
 
 **What the graph shows**:
 - Central green node: **26** (the icon/problem)

@@ -4,7 +4,13 @@ A living philosophical and mathematical tribute to **Charles Sanders Peirce** (1
 
 This project implements a **genuine Peircean mathematical inquiry engine** focused on the Goldbach conjecture (easily extensible to other problems).
 
-**[The Outstanding Meaning of This Script →](https://github.com/gitfrid/CS-Peirce/wiki)**  
+## This is a Prototype 
+
+**The AI has built in subtle prior knowledge about the result (Hardy formula), which pull it towards the result, which is why it seems to work.
+What I have learned: Never blindly trust the results of AI or science!**
+
+
+**[The Meaning of This Script →](https://github.com/gitfrid/CS-Peirce/wiki)**  
 (Explore other wiki pages for usage, technical notes, and deeper reflections on Peirce in computation.)
 
 It faithfully follows Peirce's complete triadic cycle:

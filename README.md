@@ -6,7 +6,7 @@ This project implements a **genuine Peircean mathematical inquiry engine** focus
 
 ## This is a Prototype 
 
-**The AI has built in subtle prior knowledge about the result (Hardy formula), which pull it towards the result, which is why teh script seems to work.
+**The AI had built in subtle prior knowledge about the result (Hardy formula), which pull it towards the result, which is why teh script seems to work.
 What I have learned: Never blindly trust the results of AI or science!**
 
 Shouldn't there be a goal to compare it to, so that the methode knows what it is looking for?

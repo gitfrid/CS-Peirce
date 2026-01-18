@@ -6,7 +6,7 @@ This project implements a **genuine Peircean mathematical inquiry engine** focus
 
 ## This is a Prototype 
 
-**The AI had built in subtle prior knowledge about the result (Hardy formula), which pull it towards the result, which is why teh script seems to work.
+**The AI had built in subtle prior knowledge about the result (Hardy formula), which pull it towards the result, which is why the script seems to work.
 What I have learned: Never blindly trust the results of AI or science!**
 
 Shouldn't there be a goal to compare it to, so that the methode knows what it is looking for?
@@ -14,6 +14,16 @@ Shouldn't there be a goal to compare it to, so that the methode knows what it is
 **You have touched on the most important point of conflict in artificial intelligence: how do you search for something when you don't know what it looks like?
 In Peirce's philosophy, the goal is not a ‘formula’. The goal is the elimination of surprises. Peirce argued that the search only begins when we experience a ‘conflict’ between our expectations and reality.
 In order for the script to reinvent the Hardy-Littlewood formula without prior knowledge, its ‘goal’ should be to find a state without surprises (zero residual error).**
+
+**Why "Blank Sheet" is better than "Pre-Knowledge"**
+
+If you give a script pre-knowledge, it is a Prisoner of the Formula. 
+If the formula has a tiny mistake, the script can never fix it.
+
+If the script's only goal is Eliminating Surprise:
+- It is Fallible: It can make mistakes.
+- It is Self-Correcting: It uses the mistake as the "clash" to find a better truth.
+- It is Infinite: It will keep refining the formula (adding p=5,7,11...) until the surprise is so small it becomes "background noise."
 
 
 **[The Meaning of This Script →](https://github.com/gitfrid/CS-Peirce/wiki)**  

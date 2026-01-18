@@ -9,7 +9,7 @@ This project implements a **genuine Peircean mathematical inquiry engine** focus
 **The AI has built in subtle prior knowledge about the result (Hardy formula), which pull it towards the result, which is why teh script seems to work.
 What I have learned: Never blindly trust the results of AI or science!**
 
-Shouldn't there be a goal to compare it to, so that teh methode knows what it is looking for?
+Shouldn't there be a goal to compare it to, so that the methode knows what it is looking for?
 
 **You have touched on the most important point of conflict in artificial intelligence: how do you search for something when you don't know what it looks like?
 In Peirce's philosophy, the goal is not a ‘formula’. The goal is the elimination of surprises. Peirce argued that the search only begins when we experience a ‘conflict’ between our expectations and reality.

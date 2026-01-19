@@ -2,6 +2,8 @@
 
 **Prototype version – January 2026**
 
+[Meaning of CS Peirce v1.1.py](https://github.com/gitfrid/CS-Peirce/blob/main/Meaning%20of%20CS%20Peirce%20v1.1.py)
+
 A computational experiment in **Peircean abduction** applied to the **Goldbach conjecture**.
 
 The goal was to build a system that could **reinvent** the asymptotic form of the number of Goldbach partitions  
@@ -103,11 +105,3 @@ That is science.
 
 **Repository structure suggestion**
 
-```text
-CS-Peirce/
-├── Meaning of CS Peirce.py           # main script
-├── logs/
-│   ├── peirce_inquiry_*.log
-│   ├── peirce_abduction_pairs_*.log
-│   └── peirce_lemmas_*.log
-└── README.md                         # ← this file

@@ -95,13 +95,9 @@ The only honest goal is:
 
 > **Eliminate surprise — whatever the cost.**
 
-That is the Logic of Discovery.
-
-That is Peirce.
-
-That is science.
+That is the Logic of Discovery. That is Peirce. That is science.
 
 ---
 
-**Repository structure suggestion**
+# The woke up
 

@@ -8,7 +8,7 @@ This script implements a full Peircean cycle of inquiry for the Goldbach conject
 • Abduction: creative hypothesis generation
 • Deduction: diagrammatic unfolding (existential graphs + probabilistic evolution)
 • Induction: habit formation with fallibilism and self-reflection
-• Translation: symbolic algebraic output for formal mathematics
+
 
 Inspired by Peirce's triadic logic (CP 5.171), diagrammatic reasoning (CP 5.162),
 habit as generalization (CP 5.586), and infinite semiosis (CP 1.339).

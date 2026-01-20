@@ -105,6 +105,8 @@ That is the Logic of Discovery. That is Peirce. That is science.
 
 ---
 
+[]()
+
 ## What This Experiment Shows (Without Computing Primes)
 
 Even without computing prime pairs numerically, the exercise shows how human-like reasoning unfolds:

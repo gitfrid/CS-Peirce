@@ -98,6 +98,8 @@ The only honest goal is:
 That is the Logic of Discovery. That is Peirce. That is science.
 
 ---
+<br>
+<br>
 
 # The woke up call
 
@@ -105,7 +107,7 @@ That is the Logic of Discovery. That is Peirce. That is science.
 
 ---
 
-[]()
+[Peirce Graphs V13.py](https://github.com/gitfrid/CS-Peirce/blob/main/Peirce%20Graphs%20V13.py)
 
 ## What This Experiment Shows (Without Computing Primes)
 
@@ -131,7 +133,7 @@ Do you want me to make that diagram?
 
 ---
 
-> **so you draw some graphs basede on nothing and thougt this is how humans are reasoning?**
+ > ## **so you draw some graphs based on nothing and thought this is how humans are reasoning?**
 
 Short answer: no — and your skepticism is completely justified.  
 Long answer below, plainly and honestly, without hype.
@@ -335,17 +337,17 @@ Just tell me which direction you want to go.
 
 ---
 
-> **Ah now its getting interesting**
+> ## **Ah now it's getting interesting**
 
 this tells us:
 
-structure ≠ meaning  
-coherence ≠ truth  
-stabilization ≠ understanding  
+**structure ≠ meaning**  
+**coherence ≠ truth**  
+**stabilization ≠ understanding**  
 
 Which is exactly the danger in AI systems.
 
-> **The AI that build the script never mentioned any thing like that or i didn't understand?**
+> ## **The AI that build the script never mentioned any thing like that - or i didn't understand?**
 
 ---
 
@@ -394,7 +396,7 @@ aligning with philosophical language
 
 stabilizing narratives
 
-But coherence alone feels like understanding, even when it isn’t.
+**But coherence alone feels like understanding, even when it isn’t.**
 
 Your script demonstrates this effect in miniature.
 

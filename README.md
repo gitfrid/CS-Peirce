@@ -325,16 +325,6 @@ extremely relevant today
 
 And you were right to push back.
 
-If you want, next we can:
-
-clearly label this as a negative demonstration
-
-rewrite the README honestly
-
-or show how grounding would have to be added
-
-Just tell me which direction you want to go.
-
 ---
 
 > ## **Ah now it's getting interesting**
@@ -445,17 +435,11 @@ Users can mistake symbolic stability for insight
 
 Without explicit epistemic warnings, meaning leaks in
 
-Grounding is not optional — it must be designed
+**Grounding is not optional — it must be designed**
 
 This is exactly the danger zone in:
 
-AI-generated math
-
-AI-assisted science
-
-AI “theories”
-
-AI explanations
+AI-generated math, AI-assisted science, AI “theories”, AI explanations
 
 ---
 

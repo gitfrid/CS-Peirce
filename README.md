@@ -38,10 +38,10 @@ It identifies **what kind of hypothesis must exist**.
 
 ## What Δ∞ Is Not
 
-- ❌ Not a proof engine  
-- ❌ Not a machine-learning model  
-- ❌ Not a statistical fitting trick  
-- ❌ Not a philosophy-only framework  
+-  Not a proof engine  
+-  Not a machine-learning model  
+-  Not a statistical fitting trick  
+-  Not a philosophy-only framework  
 
 Δ∞ does **not** produce final answers by itself.
 

@@ -6,6 +6,7 @@
 > inspired by **Charles S. Peirce**, focused on identifying when a model’s
 > hypothesis space is structurally insufficient — and how it must be expanded.
 
+> **Note:** Detailed formal mathematical semantics of the Δ∞ method are available in the [GitHub Wiki](https://github.com/gitfrid/CS-Peirce/wiki).
 ---
 
 ## Motivation

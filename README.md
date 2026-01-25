@@ -184,7 +184,7 @@ but very weak support for **conceptual innovation**.
 
 ## Project Status
 
-🚧 **Under active development**
+ **Under active development**
 
 Planned components:
 - Minimal simulation demonstrating emergent behavior

@@ -6,6 +6,7 @@
 > inspired by **Charles S. Peirce**, focused on identifying when a model’s
 > hypothesis space is structurally insufficient — and how it must be expanded.
 
+> **Note:** Detailed formal mathematical semantics of the Δ∞ method are available in the [GitHub Wiki](https://github.com/gitfrid/CS-Peirce/wiki).
 ---
 
 ## Motivation
@@ -37,10 +38,10 @@ It identifies **what kind of hypothesis must exist**.
 
 ## What Δ∞ Is Not
 
-- ❌ Not a proof engine  
-- ❌ Not a machine-learning model  
-- ❌ Not a statistical fitting trick  
-- ❌ Not a philosophy-only framework  
+-  Not a proof engine  
+-  Not a machine-learning model  
+-  Not a statistical fitting trick  
+-  Not a philosophy-only framework  
 
 Δ∞ does **not** produce final answers by itself.
 
@@ -183,7 +184,7 @@ but very weak support for **conceptual innovation**.
 
 ## Project Status
 
-🚧 **Under active development**
+ **Under active development**
 
 Planned components:
 - Minimal simulation demonstrating emergent behavior

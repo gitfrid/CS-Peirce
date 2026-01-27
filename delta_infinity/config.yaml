@@ -1,0 +1,19 @@
+simulation:
+  N: 3000
+  L: 40.0
+  r0: 1.0
+  v0: 0.5
+  eta: 0.12           # clear below critical 
+  steps: 1500
+  seed: 42
+
+output:
+  base_dir: "C:\\github\\CS-Peirce\\in_out_delta_inf"
+  prefix: "in_out_"
+  timestamp: true
+
+cycles:
+  max_cycles: 4
+  hypotheses:
+    - NonInteracting
+    - VicsekBasic

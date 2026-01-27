@@ -1,0 +1,2 @@
+cycle,model,avg_order,failure,reasons,timestamp
+1,Keine Interaktion: Reine diffusive Orientierungsänderung (keine Thirdness/Mediation),0.020542402736028826,True,Keine stabile kollektive Ordnung (ψ < 0.3) – fehlende Firstness-Patterns; Keine Mediation/Habit – Emergenz bricht nicht durch (Identity-Gap in Richtungskontinuität),20260127_015744

@@ -1,0 +1,2 @@
+cycle,model,avg_order,failure,reasons,timestamp
+2,Vicsek-Basis: Lokale Mittelung der Nachbar-Orientierungen → emergente Alignment-Law (Thirdness),0.14765060589589232,True,Keine stabile kollektive Ordnung (ψ < 0.3) – fehlende Firstness-Patterns; Keine Mediation/Habit – Emergenz bricht nicht durch (Identity-Gap in Richtungskontinuität),20260127_015556

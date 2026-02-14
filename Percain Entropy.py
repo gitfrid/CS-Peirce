@@ -4,6 +4,8 @@ from matplotlib.animation import FuncAnimation
 import tkinter as tk
 from scipy.stats import entropy
 
+# This is just a toy script producing good looking results - not releated to peirce 
+
 width, height = 600, 600
 habit = 0.90
 tychism = 0.08
